@@ -9,6 +9,10 @@ using System.Diagnostics;
 
 namespace W15_SyncAsyncImageBillboard
 {
+    /// <summary>
+    /// A Form with 4 PictureBox controls where we will show images downloaded from a web server
+    /// That process will be done Blocking and Non-blocking the UI
+    /// </summary>
     public partial class BillboardForm : Form
     {
         CloudStorageAccount storageAccount;
@@ -45,6 +49,11 @@ namespace W15_SyncAsyncImageBillboard
             }
         }
 
+        /// <summary>
+        /// Load images sequentially blocking the thread
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LoadImagesSyncButton_Click(object sender, EventArgs e)
         {
             TextLabel.Text += $"\nDownloading image 1... ";
@@ -81,6 +90,11 @@ namespace W15_SyncAsyncImageBillboard
             //TextLabel.Text += "Finished in " + watch.ElapsedMilliseconds + " ms";
         }
 
+        /// <summary>
+        /// Loads an image from the server into a memory stream and creates an Image object from the stream.
+        /// </summary>
+        /// <param name="imageFileName">The name of the image stored in the server</param>
+        /// <returns>An Image object</returns>
         private Image LoadImageFromUri(string imageFileName)
         {
             MemoryStream stream = new MemoryStream();
