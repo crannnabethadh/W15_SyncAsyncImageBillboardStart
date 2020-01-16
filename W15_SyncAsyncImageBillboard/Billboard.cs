@@ -34,7 +34,7 @@ namespace W15_SyncAsyncImageBillboard
             InitializeBlobStorage();
         }
 
-        private void InitializeBlobStorage()
+        protected void InitializeBlobStorage()
         {
             try
             {
@@ -54,7 +54,7 @@ namespace W15_SyncAsyncImageBillboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void LoadImagesSyncButton_Click(object sender, EventArgs e)
+        protected void LoadImagesSyncButton_Click(object sender, EventArgs e)
         {
             TextLabel.Text += $"\nDownloading image 1... ";
             Stopwatch watch = Stopwatch.StartNew();
@@ -95,7 +95,7 @@ namespace W15_SyncAsyncImageBillboard
         /// </summary>
         /// <param name="imageFileName">The name of the image stored in the server</param>
         /// <returns>An Image object</returns>
-        private Image LoadImageFromUri(string imageFileName)
+        protected Image LoadImageFromUri(string imageFileName)
         {
             MemoryStream stream = new MemoryStream();
             CloudBlockBlob cloudBlockBlob = new CloudBlockBlob(new Uri(blobContainerUrl + imageFileName));
